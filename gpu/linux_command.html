@@ -1,0 +1,1681 @@
+<!doctype html>
+<html lang="jp">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: rgba(108, 117, 125, 0.08);
+    color: var(--gray-dark);
+}
+h1 {
+    color: var(--gray-dark);
+    padding-bottom: 10px;
+	text-align: center;
+}
+h2 {
+	background-color: #336699;
+	color: var(--white);
+	border-radius: 6px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+table {
+	text-align: center;
+	margin: 0 auto;
+}
+.row {
+	margin-top: 15px;
+	margin-bottom: 15px;	
+}
+.cname {
+	background-color: #336699;
+	color: var(--white);
+	border-style: solid;
+	border-color: #336699;
+	border-width: thick;
+}
+.abstract {
+	background-color: #ccddee;
+    color: var(--gray-dark);
+	border-style: solid;
+	border-color: #336699;
+	border-width: thick;
+}
+.ctable {
+	border-style: solid;
+	border-collapse: collapse;
+	border-color: #336699;
+	border-width: thick;
+	padding-bottom: 20px;
+}
+.citem {
+	border-style: none!important;
+}
+.description {
+	border-style: none!important;
+	background-color: rgba(108, 117, 125, 0.25);
+	text-align: left;
+	padding-left: 20px!important;
+	padding-right: 20px!important;
+	padding-top: 5px!important;
+	padding-bottom: 5px!important;	
+}
+.option-header {
+	border-style: none!important;
+	background-color: #ccddee;
+	text-align: left;
+}
+.option {
+	border-style: none!important;
+	background-color: var(--white);
+	text-align: left;
+	padding-left: 20px!important;
+	padding-right: 20px!important;
+	padding-top: 3px!important;
+	padding-bottom: 3px!important;	
+}
+.example-header {
+	border-style: none!important;
+	background-color: #ccddee;
+	text-align: left;
+	color: var(--red);
+}
+.example {
+	border-style: none!important;
+	background-color: var(--white);
+	text-align: left;
+	padding-left: 20px!important;
+	padding-right: 20px!important;
+	padding-top: 3px!important;
+	padding-bottom: 3px!important;	
+}
+hr { 
+  margin: 0px;
+  border-width: 2px;
+} 
+.back {
+    text-align: right;
+}
+.code-comment {
+    background-color: rgba(229, 183, 110, 0.59);
+    margin-left: 15px;
+	padding-left: 3px!important;
+	padding-right: 3px!important;
+}
+
+</style>
+
+<title>基本的なLinuxコマンド</title>
+</head>
+<body>
+
+<!-- background color #428bca -->
+
+<header>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="page-header">
+                <h1>基本的なLinuxコマンド</h1>
+            </div>
+
+			<table class="table w-75">
+			  <thead class="thead-light">
+			    <tr>
+			      <th scope="col"><a href="#basic">基本</a></th>
+			      <th scope="col"><a href="#file">ファイル操作</a></th>
+			      <th scope="col"><a href="#search">ファイル閲覧,編集等</a></th>
+			      <th scope="col"><a href="#admin">管理者</a></th>
+			      <th scope="col"><a href="#network">ネットワーク</a></th>
+			      <th scope="col"><a href="#others">その他</a></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td><a href="#man">man</a></td>
+			      <td><a href="#cp">cp</a></td>
+			      <td><a href="#less">less</a></td>
+			      <td><a href="#sudo">sudo</a></td>
+			      <td><a href="#ifconfig">ifconfig</a></td>
+			      <td><a href="#ps">ps</a></td>
+			    </tr>
+			    <tr>
+			      <td><a href="#pwd">pwd</a></td>
+			      <td><a href="#mv">mv</a></td>
+			      <td><a href="#grep">grep</a></td>
+			      <td><a href="#su">su</a></td>
+			      <td><a href="#ping">ping</a></td>
+			      <td><a href="#kill">kill</a></td>
+			    </tr>
+			    <tr>
+			      <td><a href="#ls">ls</a></td>
+			      <td><a href="#rm">rm</a></td>
+			      <td><a href="#find">find</a></td>
+			      <td><a href="#shutdown">shutdown</a></td>
+			      <td><a href="#traceroute">traceroute</a></td>
+			      <td><a href="#df">df</a></td>
+			    </tr>
+			    <tr>
+			      <td><a href="#cd">cd</a></td>
+			      <td><a href="#mkdir">mkdir</a></td>
+			      <td><a href="#cat">cat</a></td>
+			      <td><a href="#useradd">useradd</a></td>
+			      <td><a href="#netstat">netstat</a></td>
+			      <td><a href="#tar">tar</a></td>
+			    </tr>
+			    <tr>
+			      <td></td>
+			      <td><a href="#touch">touch</a></td>
+			      <td><a href="#diff">diff</a></td>
+			      <td><a href="#passwd">passwd</a></td>
+			      <td><a href="#nslookup">nslookup</a></td>
+			      <td></td>
+			    </tr>
+			    <tr>
+			      <td></td>
+			      <td><a href="#chmod">chmod</a></td>
+			      <td></td>
+			      <td></td>
+			      <td><a href="#dig">dig</a></td>
+			      <td></td>
+			    </tr>
+			    <tr>
+			      <td></td>
+			      <td><a href="#chown">chown</a></td>
+			      <td><a href="#vi">vi</a></td>
+			      <td></td>
+			      <td><a href="#arp">arp</a></td>
+			      <td></td>
+			    </tr>
+			    <tr>
+			      <td></td>
+			      <td></td>
+			      <td><a href="#emacs">emacs</a></td>
+			      <td></td>
+			      <td><a href="#ip">ip</a></td>
+			      <td></td>
+			    </tr>
+			    <tr>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td><a href="#ss">ss</a></td>
+			      <td></td>
+			    </tr>
+			    <tr>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td><a href="#curl">curl</a></td>
+			      <td></td>
+			    </tr>
+			    <tr>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td><a href="#ssh">ssh</a></td>
+			      <td></td>
+			    </tr>
+			  </tbody>
+			</table>
+        </div>
+    </div>
+    
+<!--
+	==========================================
+            セクション
+	==========================================
+-->    
+
+    <div class="row">
+        <div class="col">
+            <h2><a name="basic">基本</a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="man">man</a></th>
+      <th scope="col" class="abstract">コマンドのマニュアル表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        コマンドや設定ファイル等のマニュアル表示。<br>表示後の操作は<a href="#less">less</a>を参照。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ man ls <span class="code-comment">⇒ lsコマンドのマニュアルを表示</span><hr>
+        $ man sshd_config <span class="code-comment">⇒ SSH設定ファイルsshd_configの設定マニュアルを表示</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="pwd">pwd</a></th>
+      <th scope="col" class="abstract">作業ディレクトリの表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        現在作業しているディレクトリ（フォルダ）の絶対パスを表示する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ pwd <span class="code-comment">⇒ 作業ディレクトリを表示</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="ls">ls</a></th>
+      <th scope="col" class="abstract">ディレクトリ内のファイル一覧表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        作業ディレクトリ（フォルダ）に存在するファイル、ディレクトリの一覧を表示する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -l : 詳細(サイズ,所有者,最終更新,パーミッション)表示。<hr>
+        -a : すべてのファイル,ディレクトリを表示(隠しファイル(ドットで始まるファイル)も表示)
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ ls <span class="code-comment">⇒ 作業ディレクトリ内のファイルを表示</span><hr>
+        $ ls -a <span class="code-comment">⇒ 作業ディレクトリ内のすべてのファイルを表示</span><hr>
+        $ ls -la <span class="code-comment">⇒ 作業ディレクトリ内のすべてのファイルの詳細を表示</span><hr>
+        $ ls -la | less <span class="code-comment">⇒ 作業ディレクトリ内のすべてのファイルの詳細をlessを使って表示</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="cd">cd</a></th>
+      <th scope="col" class="abstract">ディレクトリの移動</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        作業ディレクトリ（フォルダ）を変更する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ cd /etc/ <span class="code-comment">⇒ /etc ディレクトリに移動</span><hr>
+        $ cd  <span class="code-comment">⇒ ホームディレクトリ ~ (/home/ユーザの名前/)に移動</span><hr>
+        $ cd ~/html/ <span class="code-comment">⇒ ~(ホームディレクトリ)の下の html ディレクトリに移動</span><hr>
+        $ cd tmp/ <span class="code-comment">⇒ 作業ディレクトリ(.)の下の tmp ディレクトリに移動</span><hr>
+        $ cd .. <span class="code-comment">⇒ 作業ディレクトリ(.)の一つ親のディレクトリ(..)に移動</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+        </div>
+    </div>
+
+<!--
+	==========================================
+            セクション
+	==========================================
+-->    
+    <div class="row">
+        <div class="col">
+            <h2><a name="file">ファイル操作</a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="cp">cp</a></th>
+      <th scope="col" class="abstract">ファイルのコピー</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ファイルやディレクトリをコピーする。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -R : サブディレクトリも含めてすべてコピーする
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ cp readme.txt readme.backup <span class="code-comment">⇒ readme.txtと同内容のファイルreadme.backupを作る</span><hr>
+        $ cp ~/Downloads/Anaconda3-2.3.0-Linux-x86_64.sh . <span class="code-comment">⇒ Anaconda3-2.3.0-Linux-x86_64.shを作業ディレクトリ（.）にコピー</span><hr>
+        $ cp -R src_dir target_dir <span class="code-comment">⇒ src_dirを丸ごとtarget_dirにコピーする</span><hr>
+        $ cp -R src_dir/ target_dir <span class="code-comment">⇒ src_dirの中身を丸ごとtarget_dirにコピーする（src_dir自身はコピーされない）</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="mv">mv</a></th>
+      <th scope="col" class="abstract">ファイル移動、名称変更</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ファイルやディレクトリの移動や名称変更を行う。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ mv main.c src/ <span class="code-comment">⇒ main.cを作業ディレクトリ直下のsrcディレクトリに移動する</span><hr>
+        $ mv old_name.txt new_name.txt <span class="code-comment">⇒ ファイルold_name.txtの名称をnew_name.txtに変更する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="rm">rm</a></th>
+      <th scope="col" class="abstract">ファイル削除</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ファイルやディレクトリを削除する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -r : サブディレクトリも含めてすべて削除する（-Rも同じ）<hr>
+        -f : 確認メッセージを表示せずに即座に削除する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ rm index2.html <span class="code-comment">⇒ ファイルindex2.htmlを消去する</span><hr>
+        $ rm -rf tmp <span class="code-comment">⇒ tmpフォルダを消去確認なしに完全に削除する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="mkdir">mkdir</a></th>
+      <th scope="col" class="abstract">ディレクトリの作成</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ディレクトリを作成する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ mkdir src <span class="code-comment">⇒ srcディレクトリを作成する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="touch">touch</a></th>
+      <th scope="col" class="abstract">ファイルの新規作成、タイムスタンプ変更</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ファイルの新規作成やファイルのタイムスタンプ（最終アクセス時刻、最終変更時刻）変更を行う。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -t : ファイルのアクセス時刻、変更時刻を修正する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ touch readme.txt <span class="code-comment">⇒ ファイルreadme.txtを作成する（中身は空）</span><hr>
+        $ touch -t 201805311300 readme.txt <span class="code-comment">⇒ readme.txtのタイムスタンプを2018/5/31/ 13:00に変更する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="chmod">chmod</a></th>
+      <th scope="col" class="abstract">ファイルのパーミッションの変更</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ファイルのパーミッションを変更する。<br>
+        "所有者(u)", "所属グループ(g)", "そのほか(o)"のそれぞれに対し<br>
+        "読み出し(r)", "書き込み(w)", "実行(x)" の許可(1)不許可(0)を設定。<br>
+        rwx とも許可なら111で2進数から10進数に直し7が設定値となる。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -R : サブディレクトリも含めてすべてファイルのパーミッションを変更する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ chmod 755 a.out <span class="code-comment">⇒ a.outのパーミッションを755に設定する（所有者のみ全操作が可能で、それ以外は読み出し、実行が可能）</span><hr>
+        $ chmod 644 readme.txt <span class="code-comment">⇒ readme.txtのパーミッションを644に設定する（所有者のみ読み込み、書き込みが可で、それ以外は読み出しのみ可）</span><hr>
+        $ chmod 600 id_rsa <span class="code-comment">⇒ id_rsa（SSH用の秘密鍵）のパーミッションを600に設定する（所有者のみ読み込み、書き込みが可で、それ以外は読み出し書き込み不可）</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="chown">chown</a></th>
+      <th scope="col" class="abstract">ファイル所有者の変更</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ファイルの所有者やグループを変更する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -R : サブディレクトリも含めてすべてファイルのパーミッションを変更する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ chown alice index.html <span class="code-comment">⇒ index.htmlの所有者をaliceに変更する</span><hr>
+        $ chown alice:group1 index.html <span class="code-comment">⇒ index.htmlの所有者をaliceにグループをgroup1に変更する</span><hr>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+        </div>
+    </div>
+
+<!--
+	==========================================
+            セクション
+	==========================================
+-->    
+    <div class="row">
+        <div class="col">
+            <h2><a name="search">ファイル閲覧・編集等</a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="less">less</a></th>
+      <th scope="col" class="abstract">テキストファイルの内容表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        テキストファイルの内容を表示する。文書内の移動や単語の検索が可能である。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[less起動中の操作]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        q : less を終了<hr>
+        h : help を表示<hr>
+        矢印キー上下 : 上下に1行分スクロール<hr>
+        u,d : 上下に半ページ分スクロール<hr>
+        スペースキー : 下に1ページ分スクロール<hr>
+        b : 上に1ページ分スクロール<hr>
+        g,G : ファイルの先頭,最後に移動<hr>
+        /hoge : hoge を検索。n,Nで前後のhogeにジャンプ<hr>
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ less readme.txt <span class="code-comment">⇒ readme.txtをlessを起動して閲覧する</span><hr>
+        $ ls -l /etc/ | less <span class="code-comment">⇒ /etc/ ディレクトリの中身をlessを使って閲覧する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="grep">grep</a></th>
+      <th scope="col" class="abstract">文字列の検索</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        指定した入力ファイルの中から条件を満たす行を検索する。正規表現を利用可能。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -i : 大文字と小文字の区別をしない
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ grep DirectoryIndex /etc/httpd/conf/httpd.conf <span class="code-comment">⇒ httpd.confの中からDirectoryIndexを含む行を検索する</span><hr>
+        $ ps aux | grep ssh <span class="code-comment">⇒ ps（プロセス状態表示）の実行結果からsshという文字を含む行を検索する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="find">find</a></th>
+      <th scope="col" class="abstract">ファイル検索</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        条件を満たすファイルを検索する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -name : 検索するファイル名の指定（部分一致条件を指定するには、"*hoge*"のようにワイルドカードを使う）<hr>
+        -iname : 検索するファイル名の指定（大文字小文字を区別しない）<hr>
+        -type : ファイルの種類を指定する（-type f とすると通常ファイルのみを検索する（ディレクトリ等は排除される））
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ find ~ -name "*bash*" <span class="code-comment">⇒ ホームディレクトリの中のすべてのディレクトリの中からbashという名前を含むファイルを検索する</span><hr>
+        $ find / -name network -type f 2>/dev/null <span class="code-comment">⇒ コンピュータ全体からnetworkという名前のファイルを検索する（2>/dev/null はエラーメッセージを捨てる処理）</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="cat">cat</a></th>
+      <th scope="col" class="abstract">ファイル内容の表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ファイルの中身を表示する。lessのように文書内を移動するような機能はなく、ただ出力するだけである。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ cat ~/.bashrc <span class="code-comment">⇒ .bashrcの中身を表示する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="diff">diff</a></th>
+      <th scope="col" class="abstract">2ファイルの差分表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        2つのファイルの差分を探して表示する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -u : unified形式（一つのコンテンツの中に両ファイルの内容を表示）で差分を表示する<hr>
+        -y : 2つのファイルを左右に分けて表示する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ diff test.backup test.txt <span class="code-comment">⇒ test.backupとtest.txtの差分を表示する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="vi">vi</a></th>
+      <th scope="col" class="abstract">テキストエディタviの起動</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        テキストエディタviを起動する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[vi起動中の操作]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        viには2つのモードがあるので、状況に応じて使い分ける
+        <ul>
+          <li>コマンドモード：検索、移動、セーブ、終了などのコマンドが使えるが文字入力はできない。iを入力すると編集モードに移行する</li>
+          <li>編集モード：文字を入力するためのモード。Escキーを入力するとコマンドモードに戻る。</li>
+        </ul>
+        コマンドモードでの主なコマンド
+        <ul>
+          <li>i <span class="code-comment">⇒ 編集モードに移行し、現在のカーソル位置に文字入力を行えるようにする（Escキーでコマンドモードに戻る）</span></li>
+          <li>:wq <span class="code-comment">⇒ セーブしてviを終了する</span></li>
+          <li>:q! <span class="code-comment">⇒ セーブせずにviを終了する</span></li>
+          <li>:w <span class="code-comment">⇒ セーブする</span></li>
+          <li>dd <span class="code-comment">⇒ 1行削除（切り取り）</span></li>
+          <li>u <span class="code-comment">⇒ 直前の操作の取り消し（アンドゥー）</span></li>
+          <li>/hoge <span class="code-comment">⇒ 文字列hogeを検索する。n,Nで前後のhogeに移動する。</span></li>
+          <li>Ctrl-d <span class="code-comment">⇒ 半ページ下に移動する</span></li>
+          <li>Ctrl-u <span class="code-comment">⇒ 半ページ上に移動する</span></li>
+          <li>G <span class="code-comment">⇒ 最終行に移動する</span></li>
+          <li>行数G <span class="code-comment">⇒ 「行数」で指定した行に移動する。先頭行なら1Gと入力する。</span></li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ vi ~/.bash_profile <span class="code-comment">⇒ .bash_profileをviで編集する</span><hr>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="emacs">emacs</a></th>
+      <th scope="col" class="abstract">テキストエディタemacsの起動</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        テキストエディタemacsを起動する。環境によってはインストールされていないので注意。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[emacs起動中の操作]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        C-x C-c <span class="code-comment">⇒ 終了する(CはCtrlキー；Ctrlを押しながらxとcを押す)</span><hr>
+        C-x C-s <span class="code-comment">⇒ 保存する</span><hr>
+        C-x C-w <span class="code-comment">⇒ 別名保存する</span><hr>
+        C-x C-f <span class="code-comment">⇒ ファイルを開くまたは新規作成</span><hr>
+        C-g <span class="code-comment">⇒ キャンセル（コマンド中断）</span><hr>
+        C-@ <span class="code-comment">⇒ 範囲指定開始</span><hr>
+        C-w <span class="code-comment">⇒ 指定した範囲をカット(キル)</span><hr>
+        M-w <span class="code-comment">⇒ 指定した範囲をコピー(Mは通常はEscキー；Escを押した後wを押す)</span><hr>
+        C-k <span class="code-comment">⇒ カーソルから行末までをカット</span><hr>
+        C-y <span class="code-comment">⇒ 張り付け(ヤンク)</span><hr>
+        C-x 1 <span class="code-comment">⇒ ウィンドウの分割をやめる（C-x 2 とするとウィンドウを縦に分割）</span><hr>
+        C-s <span class="code-comment">⇒ 前向き検索</span><hr>
+        C-r <span class="code-comment">⇒ 後ろ向き検索</span><hr>
+        M-% <span class="code-comment">⇒ 問い合わせ置換(Mは通常はEscキー；Escを押した後%を押す)</span><hr>
+        C-/ <span class="code-comment">⇒ もとに戻す(Undo)</span>
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ emacs ~/.bash_profile <span class="code-comment">⇒ .bash_profileをemacsで編集する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+
+        </div>
+    </div>
+
+<!--
+	==========================================
+            セクション
+	==========================================
+-->    
+    <div class="row">
+        <div class="col">
+            <h2><a name="admin">管理者</a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="sudo">sudo</a></th>
+      <th scope="col" class="abstract">管理者としてコマンドを実行する</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        スーパーユーザー（管理者）としてコマンドを実行する。sudoを許可されたユーザーしか本コマンドを実行できない。一部のLinuxではwheelグループに属しているユーザーに権限を与えるという慣習もある。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ sudo less /var/log/secure <span class="code-comment">⇒ 管理者権限でセキュリティ関連ログを見る</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="su">su</a></th>
+      <th scope="col" class="abstract">他ユーザーに切り替わる</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        他のユーザーに切り替わる。元のユーザーに戻るにはexitと入力する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        - : 環境変数を新ユーザーに引き継がない（新ユーザーの環境を利用する）
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ su - alice <span class="code-comment">⇒ ユーザーaliceに切り替わる</span><hr>
+        $ su - <span class="code-comment">⇒ スーパーユーザー（管理者）に切り替わる</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="shutdown">shutdown</a></th>
+      <th scope="col" class="abstract">シャットダウン、再起動</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        マシンのシャットダウンや再起動を行う。管理者権限が必要。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -h : シャットダウンする<hr>
+        -r : 再起動する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ sudo shutdown -h now <span class="code-comment">⇒ すぐにマシンをシャットダウンする</span><hr>
+        $ sudo shutdown -r now <span class="code-comment">⇒ すぐにマシンを再起動する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="useradd">useradd</a></th>
+      <th scope="col" class="abstract">ユーザーの追加</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        システムにユーザーを追加する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -G : ユーザが所属する補助グループを指定する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ sudo useradd alice <span class="code-comment">⇒ システムにユーザーaliceを追加する</span><hr>
+        $ sudo useradd -G wheel alice <span class="code-comment">⇒ システムにユーザーaliceを追加し、wheelグループに加える（sudo実行権限を与える）</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="passwd">passwd</a></th>
+      <th scope="col" class="abstract">パスワード変更</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ユーザーのパスワードを変更する
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ sudo passwd alice <span class="code-comment">⇒ ユーザーaliceのパスワードを変更する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+        </div>
+    </div>
+
+<!--
+	==========================================
+            セクション
+	==========================================
+-->    
+    <div class="row">
+        <div class="col">
+            <h2><a name="network">ネットワーク</a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="ifconfig">ifconfig</a></th>
+      <th scope="col" class="abstract">ネットワーク設定情報出力</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ネットワーク設定情報の表示や変更を行う。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -a : 停止しているものも含めすべてのネットワークインターフェースの状態を表示する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ ifconfig <span class="code-comment">⇒ ネットワーク設定情報を表示する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="ping">ping</a></th>
+      <th scope="col" class="abstract">ネットワーク疎通確認</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        指定ノードへのネットワークの到達性を確認する。ネットワークに問題がなくてもpingに応答しないサーバーもいるので注意。Ctrl-c で中断する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -c : 指定回数のみパケットを送付する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ ping www.google.co.jp <span class="code-comment">⇒ www.google.co.jpとの疎通確認を行う</span><hr>
+        $ ping -c 5 www.google.co.jp <span class="code-comment">⇒ www.google.co.jpとの疎通確認を5回行う</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="traceroute">traceroute</a></th>
+      <th scope="col" class="abstract">ネットワークの経路表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        指定ノードへのネットワーク経路を表示する。ネットワーク上のどこで通信が失敗しているかやボトルネックがどこかなどの解析に利用できる。
+        ネットワークに問題がなくても応答しないサーバーもいるので注意。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ traceroute www.google.co.jp <span class="code-comment">⇒ www.google.co.jpへの経路を表示する</span><hr>
+        $ traceroute www.tohoku.ac.jp <span class="code-comment">⇒ www.tohoku.ac.jpへの経路を表示する（サーバが応答しない例）</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="netstat">netstat</a></th>
+      <th scope="col" class="abstract">ソケット一覧表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ノードに設定されているソケット（他マシンとの通信路設定）の一覧を表示する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -t : tcpソケットのみを表示する（--tcpとしても同じ）<hr>
+        -r : OSが保持するルーティングテーブルを表示する<hr>
+        -i : ネットワークインターフェースの統計状態を表示する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ netstat -t <span class="code-comment">⇒ TCPソケット一覧を表示する</span><hr>
+        $ netstat -r <span class="code-comment">⇒ ルーティングテーブルを表示する</span><hr>
+        $ netstat -i <span class="code-comment">⇒ インターフェースごとの統計情報を表示する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="nslookup">nslookup</a></th>
+      <th scope="col" class="abstract">ドメイン名からIPアドレスを調べる</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ドメイン名から対応するIPアドレスを調べる。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -type : レコード（サーバーの種類等）の指定（AAAA:IP6アドレス、MX:メール、NS:ネームサーバー）
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ nslookup www.ichinoseki.ac.jp <span class="code-comment">⇒ 一関高専WebサーバーのIPアドレスを調べる</span><hr>
+        $ nslookup -type=AAAA www.google.co.jp <span class="code-comment">⇒ Google検索サイトのIPv6アドレスを調べる</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="arp">arp</a></th>
+      <th scope="col" class="abstract">ARPテーブルの表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        OSで管理しているARPテーブル（IPアドレスとMACアドレスの対応表）の表示や設定を行う。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -a : ARPテーブルを表示する。<hr>
+        -d : 指定したホストのARPエントリーを廃棄する（ネットワーク設定が変更になった場合等に用いることができる）
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ arp -a <span class="code-comment">⇒ ARPテーブルのすべてのエントリーを表示する</span><hr>
+        $ sudo arp -d 192.168.0.1 <span class="code-comment">⇒ ARPテーブルから192.168.0.1に関するエントリーを削除する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="dig">dig</a></th>
+      <th scope="col" class="abstract">ネームサーバーへのドメイン名問い合わせ</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ネームサーバーにドメイン名を問い合わせて結果を表示する。nslookupに比べ問い合わせ結果があまり加工されずに表示されるので、ネットワーク管理者にとっては扱いやすい（らしい）。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ dig www.ichinoseki.ac.jp <span class="code-comment">⇒ 一関高専WebサーバーのIPアドレスを調べる</span><hr>
+        $ dig gmail.com mx <span class="code-comment">⇒ gmail.comのメールサーバーのIPアドレスを調べる</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="ip">ip</a></th>
+      <th scope="col" class="abstract">ネットワーク設定の表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ネットワーク設定情報の表示や変更を行う。現在ifconfig等のコマンドはメンテナンスがされていないため非推奨となっており、それらの代替となるコマンドがipである。
+        機能が多岐にわたるため、「ip addr」や「ip link」のようにサブコマンドを後ろにつけて使用する。情報表示だけでなく変更もできるがこの表では省略する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[サブコマンド]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        addr : 自身のIPアドレス等のネットワーク情報を表示する（a としても同じ）<hr>
+        route : ルーティングテーブルの情報を表示する（r としても同じ）<hr>
+        neighbor : ARPテーブルの情報を表示する（neigh や n としても同じ）<hr>
+        help : ヘルプを表示する（n としても同じ）
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ ip a <span class="code-comment">⇒ 自身のIPアドレス情報を表示する（レガシーコマンドの ifconfig に相当；a はaddrの省略形）</span><hr>
+        $ ip r <span class="code-comment">⇒ ルーティングテーブルの情報を表示する（レガシーコマンドの netstat -r に相当；r はrouteの省略形）</span><hr>
+        $ ip n <span class="code-comment">⇒ ARPテーブル情報を表示する（レガシーコマンドの arp -a に相当；n はneighborの省略形）</span><hr>
+        $ ip -s link <span class="code-comment">⇒ インターフェースごとの統計情報を表示する（レガシーコマンドの netstat -i に相当）</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="ss">ss</a></th>
+      <th scope="col" class="abstract">ソケット情報表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ノードに設定されているソケット（他マシンとの通信路設定）の情報を表示する。
+        現在netstatコマンドはメンテナンスがされていないため非推奨となっており、その代替となるコマンドがssである。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -t : tcpソケットのみを表示する（--tcpとしても同じ）
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ ss -t <span class="code-comment">⇒ TCPソケット一覧を表示する（レガシーコマンドの netstat -t に相当）</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="curl">curl</a></th>
+      <th scope="col" class="abstract">URLからのデータ取得</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        指定したURLからデータを取得する
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -L : リダイレクトされた場合でもデータを取得する<hr>
+        -O : 取得したデータをファイル保存する（このオプションを指定しないときは標準出力に出力される）
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ curl -L "http://zip.cgis.biz/xml/zip.php?zn=0218511" <span class="code-comment">⇒ 郵便番号検索APIで021-8511(一関高専)を検索し、結果を表示する</span><hr>
+        $ curl -OL "http://weather.livedoor.com/forecast/rss/area/030010.xml" <span class="code-comment">⇒ Livedoorから盛岡の天気情報をダウンロードし、ファイルに保存する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="ssh">ssh</a></th>
+      <th scope="col" class="abstract">SSHクライアントプログラムの起動</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        SSHクライアントプログラムを起動する
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -p : ポート番号を指定する（指定しないときは22）
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ ssh -p 10022 alice@198.51.100.14 <span class="code-comment">⇒ ユーザーaliceで192.51.100.14のポート10022にSSHログインする</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+        </div>
+    </div>
+
+<!--
+	==========================================
+            セクション
+	==========================================
+-->    
+    <div class="row">
+        <div class="col">
+            <h2><a name="others">その他</a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="ps">ps</a></th>
+      <th scope="col" class="abstract">実行中プロセス一覧表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        実行中のプロセスの一覧を表示する。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        a : 自ユーザー以外のプロセスも表示する<hr>
+        u : 読みやすさを重視したフォーマットで出力する<hr>
+        x : 端末を持たないプロセス（OSが利用するプロセス等）も表示する<hr>
+        f : 階層構造（呼び出し関係）が分かるように出力する
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ ps uf<span class="code-comment">⇒ 自ユーザーが起動したプロセスの一覧をみる</span><hr>
+        $ ps auxf | less <span class="code-comment">⇒ すべてのプロセスの一覧をlessを使って閲覧する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="kill">kill</a></th>
+      <th scope="col" class="abstract">プロセスの強制終了</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        指定したプロセスID（PID）のプロセスを終了させる。PIDは<a href="#ps">psコマンド</a>を用いて調べられる。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ kill 24567 <span class="code-comment">⇒ PIDが24567のプロセスを強制終了する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="df">df</a></th>
+      <th scope="col" class="abstract">ディスクの空き容量表示</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ディスクの空き容量を表示する
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -h : 人間に読みやすいフォーマットで表示する（容量をG,Mなどのサイズ文字を用いて表示する）
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ df -h <span class="code-comment">⇒ ディスクの空き容量を表示する</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+<table cellpadding="0" class="table-sm table-bordered w-75 ctable">
+  <thead class="cname">
+    <tr class="cname">
+      <th scope="col" class="cname w-25"><a name="tar">tar</a></th>
+      <th scope="col" class="abstract">ファイルの解凍・圧縮</th>
+    </tr>
+  </thead>
+  <tbody class="citem">
+    <tr class="description">
+      <td colspan="2" class="description">
+        ファイルの解凍・圧縮を行う。
+	  </td>
+    </tr>
+    <tr class="option-header">
+      <td colspan="2" class="option-header">[オプション]</td>
+    </tr>
+    <tr class="option">
+      <td colspan="2" class="option">
+        -x : 解凍<hr>
+        -c : 圧縮<hr>
+        -v : 状況表示<hr>
+        -f : 圧縮ファイル名
+      </td>
+    </tr>
+    <tr class="example-header">
+      <td colspan="2" class="example-header">[使用例]</td>
+    </tr>
+    <tr class="example">
+      <td colspan="2" class="example">
+        $ tar -xvf hoge.tar <span class="code-comment">⇒ hoge.tarを解凍する(gzファイルやbz2ファイルの解凍も同じコマンド)</span><hr>
+        $ zip -r hoge.zip foo <span class="code-comment">⇒ fooフォルダをhoge.zipという名前でzip圧縮する（参考）</span><hr>
+        $ unzip hoge.zip <span class="code-comment">⇒ hoge.zipを解凍する（参考）</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="back"><a href="#top">このページのtopへ</a></p>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
