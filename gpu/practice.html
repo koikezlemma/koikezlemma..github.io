@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>GPU-02-practice</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">GPUプログラミング（２日目）実習手順</h1>
+
+<h2 id="toc_1">0. 環境設定</h2>
+
+<ul>
+<li>CUDAファイルのコンパイルはnvccコマンドで行うため，そのコマンドへのパスを通す</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ echo &#39;export PATH=/octfs/apl/CUDA/cuda-9.0/bin:$PATH&#39; &gt;&gt; ~/.bash_profile
+$ source ~/.bash_profile</code></pre></div>
+
+<ul>
+<li>実習に使用するファイルをダウンロードする</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ cd
+$ wget https://koikezlemma.github.io/gpu/gpu.zip
+$ unzip gpu.zip</code></pre></div>
+
+<ul>
+<li>大阪大学サイバーメディアセンター 大規模計算機システムの<a href="http://www.hpc.cmc.osaka-u.ac.jp/system/manual/octopus-use/">OCTOPUSの利用方法</a>を参照のこと
+
+<ul>
+<li><a href="http://www.hpc.cmc.osaka-u.ac.jp/system/manual/octopus-use/frontend/">フロントエンド利用方法</a></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_2">1. 【実習1】最初のプログラム</h2>
+
+<h3 id="toc_3">✏️ 1-1. 問題</h3>
+
+<p>16要素からなる整数配列のそれぞれの要素にindex番号（0〜15）を書き込み表示しなさい</p>
+
+<h3 id="toc_4">✏️ 1-2. C++プログラム（並列化なし）による計算</h3>
+
+<ul>
+<li><p>フォルダを作成し，移動する</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ cd ~
+$ mkdir ex1
+$ cd ex1</code></pre></div></li>
+</ul>
+
+<h4 id="toc_5">ソースコード（ex1-c.cpp）</h4>
+
+<ul>
+<li><p>ソースコードを書く</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ emacs ex1-c.cpp
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-cpp">#include &lt;stdio.h&gt;
+
+void WriteIndex(int* a, int n)
+{
+    for (int i = 0; i &lt; n; i++) {
+        a[i] = i;
+    }
+}
+
+int main()
+{
+    // Init
+    int N = 16;
+    int* h_a = new int[N]; // on host (CPU)
+
+    // Main
+    WriteIndex(h_a, N);
+    
+    // Display results
+    for (int i = 0; i &lt; N; i++) {
+        printf(&quot;%d\n&quot;,h_a[i]);
+    }
+    
+    // Free memory
+    delete [] h_a;
+    
+    return 0;
+}</code></pre></div>
+
+<h4 id="toc_6">ジョブスクリプト（cuda.nqs）</h4>
+
+<ul>
+<li>10秒制限</li>
+<li>実行ファイル名をa.outにする</li>
+<li>講習会用の待ち行列（LECTURE）に投入する</li>
+<li><p>今回GPUは使用しないが気にしない💦</p></li>
+<li><p>ジョブスクリプトを書く</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ emacs cuda.nqs
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">#!/bin/bash
+#PBS -q LECTURE
+#PBS -y 302
+#PBS -l elapstim_req=00:00:10,cpunum_job=1,gpunum_job=1
+cd $PBS_O_WORKDIR
+./a.out</code></pre></div>
+
+<h4 id="toc_7">コンパイルとジョブ投入</h4>
+
+<ul>
+<li><p>コンパイル(g++)により実行ファイルa.outが生成される</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ g++ ex1-c.cpp
+$ qsub cuda.nqs</code></pre></div></li>
+</ul>
+
+<h3 id="toc_8">✏️ 1-3. CUDAプログラムによる計算（1ブロックのみ使用）</h3>
+
+<ul>
+<li>本プログラムでは同一ブロック内の16スレッドが，それぞれ1要素の書き込みを行う</li>
+<li><p>同一ブロック内のスレッドは必ず同一マルチプロセッサ上で動作することに注意する</p></li>
+<li><p>ソースコードを書く</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ emacs ex1-cuda.cu
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<h4 id="toc_9">ソースコード（ex1-cuda.cu）</h4>
+
+<div><pre class="line-numbers"><code class="language-cpp">#include &lt;stdio.h&gt;
+
+__global__ void WriteIndex(int* a, int n)
+{
+    int i = threadIdx.x;
+    if (i &lt; n) {
+        a[i] = i;
+    }
+}
+
+int main()
+{
+    // Init
+    int N = 16;
+    int* h_a = new int[N]; // on host (CPU)
+    int* d_a;              // on device (GPU)
+    cudaMalloc(&amp;d_a, N * sizeof(int));
+
+    // Copy data from host to device
+    // Do nothing
+
+    // Main
+    int blocks = 1;
+    int threadsPerBlock = N;
+    WriteIndex&lt;&lt;&lt;blocks, threadsPerBlock&gt;&gt;&gt;(d_a, N);
+    
+    // Copy data from device to host
+    cudaMemcpy(h_a, d_a, N * sizeof(int), cudaMemcpyDeviceToHost);
+
+    // Display results
+    for (int i = 0; i &lt; N; i++) {
+        printf(&quot;%d\n&quot;,h_a[i]);
+    }
+    
+    // Free memory
+    delete [] h_a;
+    cudaFree(d_a);
+    
+    return 0;
+}</code></pre></div>
+
+<h4 id="toc_10">ソースコード解説</h4>
+
+<ul>
+<li>3-9行目：デバイス(GPU)上で実行される関数
+
+<ul>
+<li>デバイス上で実行される関数のうち，ホスト(CPU)から呼ばれるものには<code>__global__</code>をつける</li>
+<li>参考：デバイス内で呼び出される関数には<code>__device__</code>をつける</li>
+<li>ブロック内のスレッドには<code>0</code>から<code>blockDim.x - 1</code>(ブロック内のスレッド最大値 - 1)までのIDが割り当てられ，スレッドIDは<code>threadIdx.x</code>で参照できる．</li>
+</ul></li>
+<li>16,17行目：デバイス上のグローバルメモリにメモリ確保するには<code>cudaMalloc</code>関数を使用する</li>
+<li>19,20行目：通常，GPUでの処理の前にホストのデータをデバイスに転送する処理を行うが，今回は不要</li>
+<li>25行目，GPU関数（カーネル関数）を呼び出すには，関数名の後に三重ブラケットをつける．<code>&lt;&lt;&lt;blocks, threadsPerBlock&gt;&gt;&gt;</code>と書いた時，ブロックの数が<code>blocks</code>になり，1ブロックあたりのスレッド数が<code>threadsPerBlock</code>になる．今回は1ブロック16スレッドにする．</li>
+<li>27,28行目：GPU処理が完了したら，デバイスのデータをホストに転送する．そのために<code>cudaMemcpy</code>関数を使用する．
+
+<ul>
+<li>第二引数から第一引数へデータ転送される</li>
+<li>参考：ホストからデバイスにデータ転送するには<code>cudaMemcpyDeviceToHost</code>を<code>cudaMemcpyHostToDevice</code>にする</li>
+</ul></li>
+<li>37行目：デバイス上のメモリを解放するためには，<code>cudaFree</code>関数を用いる</li>
+</ul>
+
+<h4 id="toc_11">ジョブスクリプト（cuda.nqs）</h4>
+
+<ul>
+<li>前節と同じものを使う</li>
+</ul>
+
+<h4 id="toc_12">コンパイルとジョブ投入</h4>
+
+<ul>
+<li><p>コンパイル(nvcc)により実行ファイルa.outが生成される</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ nvcc ex1-cuda.cu
+$ qsub cuda.nqs</code></pre></div></li>
+</ul>
+
+<h4 id="toc_13">プログラムの性能の考察</h4>
+
+<ul>
+<li>全スレッドがグローバルメモリにコアレスアクセスしている（連続する要素にアクセスしている）点については効率が良いと言える</li>
+<li>スレッド数が少ないため，ハードウェアマルチスレッディングは活用できない（もっと要素数が多くないと活用できない）</li>
+</ul>
+
+<h4 id="toc_14">補足</h4>
+
+<ul>
+<li>ユニファイドメモリを使うとデバイス-ホスト間の手動でのデータ転送処理が不要になるが，今回は扱わない</li>
+<li>カーネル関数でブロック数，スレッド数を指定したが，それぞれ代わりに3次元座標で指定することもできる（例えば，1000と指定する代わりに(10, 10, 10) （\(10\times 10 \times 10 = 1000\)である）と指定できる）．今回は省略する．</li>
+</ul>
+
+<h3 id="toc_15">✏️ 1-4. CUDAプログラムによる計算（複数ブロック使用）</h3>
+
+<ul>
+<li>本プログラムでは8スレッドからなるブロック2つを用いて計算を行う
+
+<ul>
+<li>2つのブロックは同一マルチプロセッサ上で動作することもあれば，そうでないこともある（デバイスが自動でスケジューリングする）</li>
+<li>スレッドIDはブロック毎に別々に割り当てられるということに注意する</li>
+</ul></li>
+<li>計算時間を計測する処理も追加する</li>
+</ul>
+
+<h4 id="toc_16">ソースコード（ex1-cuda2.cu）</h4>
+
+<ul>
+<li><p>ソースコードを書く</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ emacs ex1-cuda2.cu
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-cpp">#include &lt;stdio.h&gt;
+
+__global__ void WriteIndex(int* a, int n)
+{
+    int i = blockDim.x * blockIdx.x + threadIdx.x;
+    if (i &lt; n) {
+        a[i] = i;
+    }
+}
+
+int main()
+{
+    // Init
+    int N = 16;
+    int* h_a = new int[N]; // on host (CPU)
+    int* d_a;              // on device (GPU)
+    cudaMalloc(&amp;d_a, N * sizeof(int));
+    
+    // Measure the elapsed time
+    cudaEvent_t start, stop;
+    float time_ms;
+    cudaEventCreate(&amp;start);
+    cudaEventCreate(&amp;stop);
+    cudaEventRecord(start, 0);
+
+    // Copy data from host to device
+    // Do nothing
+
+    // Main
+    int threadsPerBlock = 8;
+    int blocks = (N + threadsPerBlock - 1) / threadsPerBlock; // round up to int
+    WriteIndex&lt;&lt;&lt;blocks, threadsPerBlock&gt;&gt;&gt;(d_a, N);
+    
+    // Copy data from device to host
+    cudaMemcpy(h_a, d_a, N * sizeof(int), cudaMemcpyDeviceToHost);
+
+    // elaspsed time
+    cudaEventRecord(stop, 0);
+    // Wait until cudaEventRecord is completed. 
+    // (Note: cudaEventRecord is an asynchronous function)
+    cudaEventSynchronize(stop);
+    
+    // Display results
+    for (int i = 0; i &lt; N; i++) {
+        printf(&quot;%d\n&quot;,h_a[i]);
+    }
+    cudaEventElapsedTime(&amp;time_ms, start, stop);
+    printf(&quot;exe time: %f ms\n&quot;, time_ms);
+    
+    // Free memory
+    delete [] h_a;
+    cudaFree(d_a);
+    cudaEventDestroy(start);
+    cudaEventDestroy(stop);
+    
+    return 0;
+}</code></pre></div>
+
+<h4 id="toc_17">ソースコード解説</h4>
+
+<ul>
+<li>19-24,37-41,47,48,53,54行目：計算時間計測のための定番処理．時間はミリ秒の単位で得られ，ベストプラクティスガイドによれば約0.5マイクロ秒の精度を持つ．</li>
+<li>5行目：全ブロックのスレッドに0から「総スレッド数-1」の一意の番号を振る処理．<code>blockIdx.x</code>はブロックIDで，各ブロックに対し0から「ブロック数-1」までの番号が振られる．<code>blockDim.x</code>はブロックあたりのスレッド数，<code>threadIdx.x</code>はブロック内でのスレッド番号である．</li>
+<li>30,31行目：ブロックあたりのスレッド数を先に決めてから，必要なブロック数を決めている．基本的には，データ数/1ブロックあたりのスレッド数 がブロック数になるが，この値が整数にならない時は切り上げる（そのため式が複雑になっている）．</li>
+</ul>
+
+<h4 id="toc_18">ジョブスクリプト（cuda.nqs）</h4>
+
+<ul>
+<li>前節と同じものを使う</li>
+</ul>
+
+<h4 id="toc_19">コンパイルとジョブ投入</h4>
+
+<ul>
+<li>コンパイル(nvcc)により実行ファイルa.outが生成される</li>
+<li><p>最適化O3オプションとアーキテクチャを指定することで効率的なコードを生成する</p>
+
+<ul>
+<li>アーキテクチャ指定についてはdeviceQueryの結果および<a href="https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#options-for-steering-gpu-code-generation">nvccのドキュメント</a>を参照のこと</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ nvcc -O3 -arch=sm_60 ex1-cuda2.cu
+$ qsub cuda.nqs</code></pre></div></li>
+</ul>
+
+<h4 id="toc_20">プロファイリング（パフォーマンスの解析）</h4>
+
+<ul>
+<li>CUDAプログラムのためのコマンドベースのプロファイリングツールとしてnvprofがある</li>
+<li>詳細は<a href="https://docs.nvidia.com/cuda/profiler-users-guide/index.html#nvprof-overview">NVIDIAのProfiler User&#39;s Guide</a>を参照のこと
+
+<ul>
+<li>オプションを指定することでより詳細な情報を取得できる</li>
+</ul></li>
+<li>GUIが使える時は総合開発環境であるNsightを使ってプロファイリングするのが便利</li>
+<li><p>nvprofを利用するためにはジョブスクリプト(prof.nqs)を以下のようにする</p></li>
+<li><p>ジョブスクリプトを書く</p>
+
+<div><pre class="line-numbers"><code class="language-none">$ emacs prof.nqs
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+<li><p>prof.nqs</p></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">#!/bin/bash
+#PBS -q LECTURE
+#PBS -y 302
+#PBS -l elapstim_req=00:00:10,cpunum_job=1,gpunum_job=1
+cd $PBS_O_WORKDIR
+nvprof ./a.out</code></pre></div>
+
+<ul>
+<li><p>ジョブの投入</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ qsub prof.nqs</code></pre></div></li>
+<li><p>結果は標準エラー出力に出力される（以下は具体例）</p></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ cat prof.nqs.e389728 
+==92462== NVPROF is profiling process 92462, command: ./a.out
+==92462== Profiling application: ./a.out
+==92462== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   60.75%  2.0800us         1  2.0800us  2.0800us  2.0800us  WriteIndex(int*, int)
+                   39.25%  1.3440us         1  1.3440us  1.3440us  1.3440us  [CUDA memcpy DtoH]
+      API calls:   99.75%  520.14ms         1  520.14ms  520.14ms  520.14ms  cudaMalloc
+                    0.13%  682.87us        94  7.2640us     114ns  282.80us  cuDeviceGetAttribute
+                    0.04%  214.33us         1  214.33us  214.33us  214.33us  cudaFree
+                    0.04%  209.93us         1  209.93us  209.93us  209.93us  cuDeviceTotalMem
+                    0.01%  56.766us         1  56.766us  56.766us  56.766us  cuDeviceGetName
+                    0.01%  45.203us         1  45.203us  45.203us  45.203us  cudaLaunch
+                    0.01%  30.483us         1  30.483us  30.483us  30.483us  cudaMemcpy
+                    0.00%  11.443us         2  5.7210us  2.2800us  9.1630us  cudaEventRecord
+                    0.00%  8.3070us         2  4.1530us     682ns  7.6250us  cudaEventCreate
+                    0.00%  6.3850us         1  6.3850us  6.3850us  6.3850us  cudaEventSynchronize
+                    0.00%  6.1000us         2  3.0500us     193ns  5.9070us  cudaSetupArgument
+                    0.00%  5.0610us         1  5.0610us  5.0610us  5.0610us  cudaEventElapsedTime
+                    0.00%  3.0570us         3  1.0190us     185ns  2.6390us  cuDeviceGetCount
+                    0.00%  1.9980us         2     999ns     517ns  1.4810us  cudaEventDestroy
+                    0.00%  1.2720us         1  1.2720us  1.2720us  1.2720us  cudaConfigureCall
+                    0.00%     595ns         2     297ns     146ns     449ns  cuDeviceGet</code></pre></div>
+
+<h2 id="toc_21">2. 【実習2】効率の良くリダクションを行うプログラム</h2>
+
+<h3 id="toc_22">✏️ 2-1. 問題</h3>
+
+<p>\(2^{25}\)要素からなる配列にはランダムに0または1が書き込まれている．この時，この配列の総和を求めなさい．</p>
+
+<h3 id="toc_23">✏️ 2-2. Cascadingアルゴリズムによる計算</h3>
+
+<ul>
+<li><p>フォルダを作成し，移動する</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ cd ~
+$ mkdir ex2
+$ cd ex2</code></pre></div></li>
+</ul>
+
+<h4 id="toc_24">ソースコード（ex2.cu）</h4>
+
+<ul>
+<li>処理時間計測対象に入力データのホストからデバイスへのコピーは含めないことにする</li>
+<li><p>Tree-basedリダクションの部分（42-70行）はワープシャッフルの機能を使うと高速化できるが，全体に対する処理時間の影響が少ないので対応しない</p></li>
+<li><p>ソースコードを書く</p>
+
+<div><pre class="line-numbers"><code class="language-bash">$ emacs ex2.cpp
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-cpp">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+// Thrust library
+// #include &lt;thrust/reduce.h&gt;
+// #include &lt;thrust/device_ptr.h&gt;
+
+
+// Device parameter
+const int NUM_SM = 56;
+const int WARPS_PER_SM = 64;
+const int WARPS_PER_BLOCK = 32;
+const int NUM_BLOCKS = NUM_SM * WARPS_PER_SM / WARPS_PER_BLOCK;
+const int THREADS_PER_WARP = 32;
+const int THREADS_PER_BLOCK = WARPS_PER_BLOCK * THREADS_PER_WARP;
+
+
+__global__ void ReductionCascading(int* inArray, unsigned int numElements, int* halfwayResult)
+{
+    const unsigned int tid  = threadIdx.x;            // thread id in each block
+    const unsigned int wid  = tid / THREADS_PER_WARP; // warp id in each block
+    const unsigned int lid  = tid % THREADS_PER_WARP; // lane id = thread id in each warp
+    const unsigned int sid  = blockIdx.x * blockDim.x + threadIdx.x; // sequential thread id in the kernel
+    const unsigned int numTotalThreads = gridDim.x * blockDim.x;
+
+    int item1 = 0;
+    __shared__ int x[WARPS_PER_BLOCK * THREADS_PER_WARP];
+    __shared__ int y[WARPS_PER_BLOCK];
+    
+    const int numIter = 1 + (numElements - 1) / numTotalThreads; //round up to int
+    // Main
+    for (int i = 0; i &lt; numIter - 1; i++) {
+        item1 += inArray[numTotalThreads * i + sid];
+    }
+    // Last
+    int idx = numTotalThreads * (numIter - 1) + sid;
+    if (idx &lt; numElements) {
+        item1 += inArray[idx];
+    }
+    x[tid] = item1;
+    __syncthreads();
+
+    if (lid &lt; 16) {
+        x[tid] += x[tid + 16];
+        __syncthreads();
+        x[tid] += x[tid + 8];
+        __syncthreads();
+        x[tid] += x[tid + 4];
+        __syncthreads();
+        x[tid] += x[tid + 2];
+        __syncthreads();
+        x[tid] += x[tid + 1];
+        __syncthreads();
+    }
+
+    if( 0 == lid ){
+        y[wid] = x[tid];
+    }
+    __syncthreads();
+    
+    if (tid &lt; 16) {
+        y[tid] += y[tid + 16];
+        __syncthreads();
+        y[tid] += y[tid + 8];
+        __syncthreads();
+        y[tid] += y[tid + 4];
+        __syncthreads();
+        y[tid] += y[tid + 2];
+        __syncthreads();
+        y[tid] += y[tid + 1];
+        __syncthreads();
+    }
+    if( 0 == tid ){
+        halfwayResult[blockIdx.x] = y[tid];
+    }
+    
+    return;
+}
+
+
+int main()
+{    
+    // Init
+    int logNumElements = 25; // input_size = 2^25
+    int numElements = 1 &lt;&lt; logNumElements;
+    int* h_input = new int[numElements]; // on host (CPU)
+    int* h_halfwayResult = new int[NUM_BLOCKS];
+    int  h_output = 0;
+    int* d_input;                        // on device (GPU)
+    int* d_halfwayResult;
+    cudaMalloc(&amp;d_input, numElements * sizeof(int));
+    cudaMalloc(&amp;d_halfwayResult, NUM_BLOCKS * sizeof(int));
+    srand(0);
+    for( unsigned int i = 0; i &lt; numElements; ++i) {
+        h_input[i] = (int)(rand() % 2);
+    }
+    int answer = 0;
+    for (int i = 0; i &lt; numElements; i++) {
+        answer += h_input[i];
+    }
+
+    // Measure the elapsed time
+    cudaEvent_t start, stop;
+    float time_ms;
+    cudaEventCreate(&amp;start);
+    cudaEventCreate(&amp;stop);
+
+    // Copy data from host to device
+    cudaMemcpy(d_input, h_input, numElements * sizeof(int), cudaMemcpyHostToDevice);
+
+    // Main
+    printf(&quot;numElements = %d (2^%d)\n&quot;, numElements, logNumElements);
+    cudaEventRecord(start, 0);
+    ReductionCascading&lt;&lt;&lt;NUM_BLOCKS, THREADS_PER_BLOCK&gt;&gt;&gt;(d_input, numElements, d_halfwayResult);
+    
+    // Copy data from device to host
+    cudaMemcpy(h_halfwayResult, d_halfwayResult, NUM_BLOCKS * sizeof(int), cudaMemcpyDeviceToHost);
+
+    h_output = 0;
+    for (int i = 0; i &lt; NUM_BLOCKS; i++) {
+        h_output += h_halfwayResult[i];
+    }
+
+    // elaspsed time
+    cudaEventRecord(stop, 0);
+    // Wait until cudaEventRecord is completed. 
+    // (Note: cudaEventRecord is an asynchronous function)
+    cudaEventSynchronize(stop);
+    
+    // Display results
+    printf(&quot;Our result = %d, correct answer = %d\n&quot;, h_output, answer);
+    cudaEventElapsedTime(&amp;time_ms, start, stop);
+    printf(&quot;  exe time: %f ms\n&quot;, time_ms);
+
+    // Thrust Library
+    // int h_outputThrust;
+    // thrust::device_ptr&lt;int&gt; d_input_ptr = thrust::device_pointer_cast(d_input);
+    // cudaEventRecord(start, 0);
+    // h_outputThrust = thrust::reduce(d_input_ptr, d_input_ptr + numElements);
+    // cudaEventRecord(stop, 0);
+    // // Wait until cudaEventRecord is completed. 
+    // // (Note: cudaEventRecord is an asynchronous function)
+    // cudaEventSynchronize(stop);
+    // printf(&quot;Thrust result = %d, correct answer = %d\n&quot;, h_outputThrust, answer);
+    // cudaEventElapsedTime(&amp;time_ms, start, stop);
+    // printf(&quot;  exe time: %f ms\n&quot;, time_ms);
+    
+    // Free memory
+    delete [] h_input;
+    delete [] h_halfwayResult;
+    cudaFree(d_input);
+    cudaFree(d_halfwayResult);
+    cudaEventDestroy(start);
+    cudaEventDestroy(stop);
+    
+    return 0;
+}</code></pre></div>
+
+<h4 id="toc_25">ジョブスクリプト（cuda.nqs）</h4>
+
+<ul>
+<li>10秒制限</li>
+<li>実行ファイル名をa.outにする</li>
+<li>講習会用の待ち行列（LECTURE）に投入する</li>
+<li><p>これまでと同内容</p></li>
+<li><p>ジョブスクリプトを書く</p>
+
+<div><pre class="line-numbers"><code class="language-none">$ emacs cuda.nqs
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">#!/bin/bash
+#PBS -q LECTURE
+#PBS -y 302
+#PBS -l elapstim_req=00:00:10,cpunum_job=1,gpunum_job=1
+cd $PBS_O_WORKDIR
+./a.out</code></pre></div>
+
+<h4 id="toc_26">コンパイルとジョブ投入</h4>
+
+<ul>
+<li>コンパイル(nvcc)により実行ファイルa.outが生成される</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ nvcc -O3 -arch=sm_60 ex2.cu
+$ qsub cuda.nqs</code></pre></div>
+
+<h4 id="toc_27">処理時間のプロファイリング</h4>
+
+<ul>
+<li><p>標準的なプロファイリング用のジョブスクリプト（prof.nqs）を作成する</p>
+
+<div><pre class="line-numbers"><code class="language-none">$ emacs prof.nqs
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">#!/bin/bash
+#PBS -q LECTURE
+#PBS -y 302
+#PBS -l elapstim_req=00:00:10,cpunum_job=1,gpunum_job=1
+cd $PBS_O_WORKDIR
+nvprof ./a.out</code></pre></div>
+
+<ul>
+<li>その後ジョブ投入</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ qsub prof.nqs</code></pre></div>
+
+<ul>
+<li>ジョブが完了したら，標準エラー出力を確認する</li>
+</ul>
+
+<h4 id="toc_28">オキュパンシのプロファイリング</h4>
+
+<ul>
+<li><p>オキュパンシをプロファイリングするためのジョブスクリプト（occupancy.nqs）を作成する</p>
+
+<div><pre class="line-numbers"><code class="language-none">$ emacs occupancy.nqs
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">#!/bin/bash
+#PBS -q LECTURE
+#PBS -y 302
+#PBS -l elapstim_req=00:00:10,cpunum_job=1,gpunum_job=1
+cd $PBS_O_WORKDIR
+nvprof --metrics achieved_occupancy ./a.out</code></pre></div>
+
+<ul>
+<li>その後ジョブ投入</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ qsub occupancy.nqs</code></pre></div>
+
+<ul>
+<li>ジョブが完了したら，標準エラー出力を確認する</li>
+<li>Achieved occupancyについては<a href="https://docs.nvidia.com/gameworks/content/developertools/desktop/analysis/report/cudaexperiments/kernellevel/achievedoccupancy.htm">NVIDIAのドキュメント</a>参照</li>
+</ul>
+
+<h3 id="toc_29">✏️ 2-3. Thrustライブラリとの比較</h3>
+
+<h4 id="toc_30">ソースコード（ex2.cuを変更）</h4>
+
+<ul>
+<li><p>ex2.cuのThrustに関する行（4,5行，135-145行）のコメントアウトを取り除く</p>
+
+<div><pre class="line-numbers"><code class="language-none">$ emacs ex2.cu
+（内容編集後，C-x C-sで保存，C-x C-cで終了）</code></pre></div></li>
+</ul>
+
+<h4 id="toc_31">ジョブスクリプト（cuda.nqs）</h4>
+
+<ul>
+<li>前節と同じものを使う</li>
+</ul>
+
+<h4 id="toc_32">コンパイルとジョブ投入</h4>
+
+<ul>
+<li>コンパイル(nvcc)により実行ファイルa.outが生成される</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ nvcc -O3 -arch=sm_60 ex2.cu
+$ qsub cuda.nqs</code></pre></div>
+
+<ul>
+<li>ジョブ完了後，標準出力ファイルを開き，自作とライブラリの処理時間をチェックする</li>
+</ul>
+
+<h4 id="toc_33">処理時間のプロファイリング</h4>
+
+<ul>
+<li>ジョブ投入</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">$ qsub prof.nqs</code></pre></div>
+
+<ul>
+<li>自作とライブラリでメイン処理の処理時間がほとんど変わらないことを確認する</li>
+</ul>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+!function(e){var t={variable:[{pattern:/\$?\(\([\w\W]+?\)\)/,inside:{variable:[{pattern:/(^\$\(\([\w\W]+)\)\)/,lookbehind:!0},/^\$\(\(/],number:/\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,operator:/--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,punctuation:/\(\(?|\)\)?|,|;/}},{pattern:/\$\([^)]+\)|`[^`]+`/,inside:{variable:/^\$\(|^`|\)$|`$/}},/\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i]};e.languages.bash={shebang:{pattern:/^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,alias:"important"},comment:{pattern:/(^|[^"{\\])#.*/,lookbehind:!0},string:[{pattern:/((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,lookbehind:!0,inside:t},{pattern:/(["'])(?:\\\\|\\?[^\\])*?\1/g,inside:t}],variable:t.variable,"function":{pattern:/(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,lookbehind:!0},keyword:{pattern:/(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,lookbehind:!0},"boolean":{pattern:/(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,lookbehind:!0},operator:/&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,punctuation:/\$?\(\(?|\)\)?|\.\.|[{}[\];]/};var a=t.variable[1].inside;a["function"]=e.languages.bash["function"],a.keyword=e.languages.bash.keyword,a.boolean=e.languages.bash.boolean,a.operator=e.languages.bash.operator,a.punctuation=e.languages.bash.punctuation}(Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.c=Prism.languages.extend("clike",{keyword:/\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/,operator:/\-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|?\||[~^%?*\/]/,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)[ful]*\b/i}),Prism.languages.insertBefore("c","string",{macro:{pattern:/(^\s*)#\s*[a-z]+([^\r\n\\]|\\.|\\(?:\r\n?|\n))*/im,lookbehind:!0,alias:"property",inside:{string:{pattern:/(#\s*include\s*)(<.+?>|("|')(\\?.)+?\3)/,lookbehind:!0},directive:{pattern:/(#\s*)\b(define|elif|else|endif|error|ifdef|ifndef|if|import|include|line|pragma|undef|using)\b/,lookbehind:!0,alias:"keyword"}}},constant:/\b(__FILE__|__LINE__|__DATE__|__TIME__|__TIMESTAMP__|__func__|EOF|NULL|stdin|stdout|stderr)\b/}),delete Prism.languages.c["class-name"],delete Prism.languages.c["boolean"];
+</script>
+
+<script type="text/javascript">
+Prism.languages.cpp=Prism.languages.extend("c",{keyword:/\b(alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|class|compl|const|constexpr|const_cast|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|float|for|friend|goto|if|inline|int|long|mutable|namespace|new|noexcept|nullptr|operator|private|protected|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/,"boolean":/\b(true|false)\b/,operator:/[-+]{1,2}|!=?|<{1,2}=?|>{1,2}=?|\->|:{1,2}|={1,2}|\^|~|%|&{1,2}|\|?\||\?|\*|\/|\b(and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/}),Prism.languages.insertBefore("cpp","keyword",{"class-name":{pattern:/(class\s+)[a-z0-9_]+/i,lookbehind:!0}});
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
