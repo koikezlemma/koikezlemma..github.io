@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>NLP-index</title>
+<title>index</title>
 
 
 <style type="text/css">
@@ -331,88 +331,80 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">自然言語処理と深層学習（2021年度）</h1>
+<h1 id="toc_0">深層学習プログラミング教材</h1>
 
-<h3 id="toc_1"><a href="https://koikezlemma.github.io/NLP2022/">2022年度版の方をご覧ください</a></h3>
+<p>2023.10.03 教材ページ作成</p>
 
-<h2 id="toc_2">講義概要</h2>
+<p>東北大学大学院情報科学研究科　小池 敦  </p>
 
-<h3 id="toc_3">コース名</h3>
+<h2 id="toc_1">概要</h2>
 
-<p><a href="https://duex.jp/course/detail/dsp/224">データサイエンス『実践コース』数理工学PBL</a></p>
+<p>Pythonの基礎から深層学習ライブラリTensoFlowの使い方，HuggingFace Transformersを使った自然言語処理までを学習する．
+見本に従ってコードを写経して動かすことで，実践力を養う．</p>
 
-<h3 id="toc_4">概要</h3>
-
-<p>自然言語処理について，基礎事項から深層学習を用いた応用までを講義・実習する．</p>
-
-<h3 id="toc_5">講師</h3>
-
-<p>一関高専　小池 敦</p>
-
-<h3 id="toc_6">資料について</h3>
+<h3 id="toc_2">実習教材について</h3>
 
 <ul>
-<li>講義のPDFファイルとPython Notebook形式の実習ファイルからなる</li>
-<li>実習教材については，Google Colaboratoryで動作する</li>
-<li>実習は別途記載されたソースコードを写経して実行する形式になっているが，本ページからリンクされたファイルは基本的にコード記載済みになっている
+<li>Google Colaboratoryで動作する（要Googleアカウント）</li>
+<li>実習は別途記載されたソースコードを写経して実行する形式になっているが，コード記載済みのファイルも用意してある
 
 <ul>
-<li>コード未記載の実習ファイルは<a href="https://drive.google.com/drive/folders/1DrXI_deF6-LLmvJ5M_C52ROQaOuPf-Hu?usp=sharing">こちら</a></li>
+<li>実習教材ファイルの共有フォルダは<a href="https://drive.google.com/drive/folders/1Esq92v0YGESC3PZCbrc-m80d2f8AQPhy?usp=sharing">こちら</a></li>
+<li>コード記載済みの実習ファイルは<a href="https://drive.google.com/drive/folders/1eMjyEsqJYLaK6WJFKagyq9NULhYDkjAI?usp=sharing">こちら</a></li>
 </ul></li>
 </ul>
 
-<h3 id="toc_7">資料ダウンロード</h3>
+<h3 id="toc_3">実習教材の使い方</h3>
+
+<ol>
+<li>Chromeで所望のファイル開く<br>
+（Googleドライブから開いた際は使用するアプリを聞かれたことがあるが，Google Colaboratoryを選択する）</li>
+<li>「ファイル」⇒「ドライブにコピーを保存」：自分のGoogleドライブにコピーを保存する</li>
+<li>コメント（Markdown）の#--#--#で囲まれた部分と同じ内容をコードセル（灰色のブロック）に入力したのち、実行ボタン（コードセル左上端）を押して実行する</li>
+</ol>
+
+<h2 id="toc_4">実習ファイル</h2>
+
+<h3 id="toc_5">1. Pythonと自然言語処理の基礎</h3>
 
 <ul>
-<li><a href="https://github.com/koikezlemma/koikezlemma.github.io/tree/master/NLP">GitHub教材ページ</a></li>
+<li>実習ファイル： <a href="https://colab.research.google.com/drive/1GZg-u_CNKPs7uWDvrtsGqvvRqMLZ4hFY?usp=sharing">01-Python-NLP.ipynb</a><br>
+（コード記載済み版は <a href="https://colab.research.google.com/drive/1sexU-_ucrGnltNlGZ2r9jXG8Zz35wixl?usp=sharing">01-Python-NLP-filled.ipynb</a>）</li>
 </ul>
 
-<h2 id="toc_8">1日目：自然言語処理の基礎</h2>
+<h3 id="toc_6">2. 数値計算ライブラリNumPyの基礎</h3>
 
 <ul>
-<li>基本的な文字列処理（トークン化，単語・文書の表現）</li>
-<li>Python速習</li>
-<li>Webからのテキスト取得と前処理</li>
-<li>日本語に対する自然言語処理</li>
+<li>実習ファイル： <a href="https://colab.research.google.com/drive/1bTg83IJJhIlLq1s8NizIBPFv2XMjrF42?usp=sharing">02-NumPy.ipynb</a><br>
+（コード記載済み版は <a href="https://colab.research.google.com/drive/1QZJ4YVtHRgj73lo9jgevwTWVJaamDas-?usp=sharing">02-NumPy-filled.ipynb</a>）</li>
 </ul>
 
-<h3 id="toc_9">教材</h3>
+<h3 id="toc_7">3. 深層学習ライブラリTensorFlowの基礎</h3>
 
 <ul>
-<li>講義資料（自然言語処理の基礎）：<a href="./Day1_%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86.pdf">Day1_自然言語処理.pdf</a></li>
-<li>実習教材（Pythonと自然言語処理の基礎）：<a href="https://colab.research.google.com/drive/1dsgXJO2FZYic7K0GwoJWiwuFIWIq-1oK?usp=sharing">01-Python-NLP-basic-filled.ipynb</a></li>
+<li>実習ファイル： <a href="https://colab.research.google.com/drive/1kZvGBDlWm9dW3UXDH4oE0146aURrN7Rb?usp=sharing">03-TensorFlow-basic.ipynb</a><br>
+（コード記載済み版は <a href="https://colab.research.google.com/drive/16xg3oI-Wq1_e1DCx27_FsqHe8Dv3cnLm?usp=sharing">03-TensorFlow-basic-filled.ipynb</a>）</li>
 </ul>
 
-<h2 id="toc_10">2日目：深層学習による自然言語処理（１）</h2>
+<h3 id="toc_8">4. 深層学習ライブラリTensorFlowの応用（画像編）</h3>
 
 <ul>
-<li>深層学習の基礎（深層学習の仕組みと進展，Kerasの使い方）
-
-<ul>
-<li>講義資料：<a href="./Day2-1_%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92.pdf">Day2-1_深層学習.pdf</a></li>
-<li>実習教材：<a href="https://colab.research.google.com/drive/1XUjFcs3byEjBLqgkNxWoEnZrFuu_tBrp?usp=sharing">02-Keras-basic-filled.ipynb</a></li>
-</ul></li>
-<li>分散表現（分散表現の概要，学習方法）
-
-<ul>
-<li>講義資料：<a href="./Day2-2_%E5%88%86%E6%95%A3%E8%A1%A8%E7%8F%BE.pdf">Day2-2_分散表現.pdf</a></li>
-<li>実習教材：<a href="https://colab.research.google.com/drive/1MWgLhv_SzMjrDXuLwd6iTz8Bm1u0H-ap?usp=sharing">03-Word-embedding-filled.ipynb</a></li>
-</ul></li>
+<li>実習ファイル： <a href="https://colab.research.google.com/drive/1xSoxEcDevXdmcSYIEWfXhrmJZFpIr5WA?usp=sharing">04-TensorFlow-practice.ipynb</a><br>
+（コード記載済み版は <a href="https://colab.research.google.com/drive/1oYxD_a4c7h3jJU7Ed9E2dPdbxP_C2h35?usp=sharing">04-TensorFlow-practice-filled.ipynb</a>）</li>
 </ul>
 
-<h2 id="toc_11">3日目：深層学習による自然言語処理（２）</h2>
+<h3 id="toc_9">5. 単語埋め込みの学習</h3>
 
 <ul>
-<li>アテンション（RNN，アテンション，セルフアテンション，Transformer，BERT）
+<li>実習ファイル： <a href="https://colab.research.google.com/drive/1cn5BlIQpUuu1-v1Kb1FFzKzB34UXgjW6?usp=sharing">05-Word-embedding.ipynb</a><br>
+（コード記載済み版は <a href="https://colab.research.google.com/drive/1AfEsq6FvpabRQXRVwwNviXI2eCSyYKm2?usp=sharing">05-Word-embedding-filled.ipynb</a>）</li>
+</ul>
+
+<h3 id="toc_10">6. Hugging Face Transformersによる自然言語処理の基礎</h3>
 
 <ul>
-<li>講義資料：<a href="./Day3_%E3%82%A2%E3%83%86%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%B3.pdf">Day3_アテンション.pdf</a></li>
-</ul></li>
-<li>Hugging Face Transformersを用いた自然言語処理
-
-<ul>
-<li>実習教材：<a href="https://colab.research.google.com/drive/1GL2aywRhIIbnkA0sUqlcMiRUu8qQwKSA?usp=sharing">04-HuggingFace-filled.ipynb</a></li>
-</ul></li>
+<li>実習ファイル： <a href="https://colab.research.google.com/drive/1ecLbe-utHFhOew8rDG9pbv0y5igrm6NZ?usp=sharing">06-HuggingFace.ipynb</a><br>
+（コード記載済み版は <a href="https://colab.research.google.com/drive/1g_Y4fgkBtazsVwEWo93LmXIpKTmbMEPo?usp=sharing">06-HuggingFace-filled.ipynb</a>）</li>
 </ul>
 
 
